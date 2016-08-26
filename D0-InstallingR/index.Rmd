@@ -1,12 +1,12 @@
 ---
-title: "Installing R"
+title: "Installing R and RStudio"
 output:
-  knitrBootstrap::bootstrap_document:
-    title: "Test file"
+  html_document:
     theme: cosmo
-    highlight: sunburst
-    theme.chooser: FALSE
-    highlight.chooser: FALSE
+    highlight: tango
+    toc: true
+    toc_float: true
+
 ---
 
 ## Installing R
