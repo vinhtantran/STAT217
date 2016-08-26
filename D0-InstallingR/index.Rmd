@@ -6,7 +6,7 @@ output:
     highlight: tango
     toc: true
     toc_float: true
-
+    css: ../css/styles.css
 ---
 
 ## Installing R
@@ -34,3 +34,7 @@ You will not use R directly in this course. Its UI is very basic and not beautif
 * Once it is downloaded, run the RStudio installer and take all of the defaults: In Windows, double-click on the RStudio installer to start the installation; in Mac OS X, double-click on the downloaded RStudio disk-image file, and drag the *RStudio* icon to the *Applications* folder.
 *  When you first run RStudio (in Windows, if you don't see the *RStudio* icon on the desktop, click on Start icon and type in `rstudio` in the search box), it should detect your R installation and start the R console.  
 * To configure RStudio to your taste, select *Tools > Global Options* (Windows) or *RStudio > Preferences* (Mac OS X) from the RStudio menus. In particular, I suggest that on the *General* options screen you **deselect** *Restore .RData into workspace at startup*, and set *Save workspace to .RData on exit* to **Never**. 
+
+## Using R on Campus Computers
+R and RStudio are available on the computers in the Reid and Roberts computer labs. If you do not wish to
+download R on your personal computer you may use those labs.
