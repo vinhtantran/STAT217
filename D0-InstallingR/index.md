@@ -1,28 +1,26 @@
-# Preparing for The First Class
-Tan Tran  
-`r format(Sys.time(), '%d %B, %Y')`  
+---
+title: "Habits"
+output: html_document
+---
 
-Welcome to STAT 217 class. The following instructions on how to install R and RStudio is extracted and modified a bit from your main course pack, which can be downloaded for free at [MSU Library website](https://scholarworks.montana.edu/xmlui/handle/1/2999).
-
-# Installing R
-
+## Installing R
 * Visit the [Comprehensive R Archive Network](https://cran.r-project.org/) (CRAN)
 * In the Download and Install R section, you can click on the link that corresponds to your system (Linux, Mac, or Windows).
 
-## On Windows
+### On Windows
 * Click on **base**.
 * Click on **Download R 3.3.1 for Windows** to download the executable file then open that file to start the installation.
 * The installation should be straightforward. You can choose the displayed language, installation location on your disk, and the components. Leaving them at default will work for most of you.
 * Click **Finish** to end the installation of R.
 
-## On Mac OS X
+### On Mac OS X
 * Scroll down a little bit, you will see some download links designed for different version of your OS. If you have Mac OS X 10.9 (Mavericks) or higher, choose **R-3.3.1.pkg**. If your OS version is older than that, there is a link of an older version of R right below it.
 * Once it is downloaded, double-click on the installer. You may take all of the defaults.
 
-## On Linux Systems
+### On Linux Systems
 * After clicking **Download R for Linux**, you will be shown different folders for different Linux distros. Select your distro, and proceed as directed.
 
-# Installing RStudio
+## Installing RStudio
 You will not use R directly in this course. Its UI is very basic and not beautiful. Instead, you will use RStudio, an enhanced interface that will make interacting with R less frustrating.
 
 * Go to [RStudio download page](https://www.rstudio.com/products/rstudio/download3/). We will use the Free License Desktop version. Download the appropriate installer for your operating system (Windows, Mac OS X, or Linux).

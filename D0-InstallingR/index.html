@@ -862,43 +862,41 @@
 </head>
 <body>
 <title>
-Preparing for The First Class
+Test file
 </title>
 <div id="wrap">
 <div class="container">
 <div class="row row-offcanvas row-offcanvas-right">
 <div class="contents col-xs-12 col-md-10">
-<p>Welcome to STAT 217 class. The following instructions on how to install R and RStudio is extracted and modified a bit from your main course pack, which can be downloaded for free at <a href="https://scholarworks.montana.edu/xmlui/handle/1/2999">MSU Library website</a>.</p>
-<h1 id="installing-r">Installing R</h1>
+<h2 id="installing-r">Installing R</h2>
 <ul>
 <li>Visit the <a href="https://cran.r-project.org/">Comprehensive R Archive Network</a> (CRAN)</li>
 <li>In the Download and Install R section, you can click on the link that corresponds to your system (Linux, Mac, or Windows).</li>
 </ul>
-<h2 id="on-windows">On Windows</h2>
+<h3 id="on-windows">On Windows</h3>
 <ul>
 <li>Click on <strong>base</strong>.</li>
 <li>Click on <strong>Download R 3.3.1 for Windows</strong> to download the executable file then open that file to start the installation.</li>
 <li>The installation should be straightforward. You can choose the displayed language, installation location on your disk, and the components. Leaving them at default will work for most of you.</li>
 <li>Click <strong>Finish</strong> to end the installation of R.</li>
 </ul>
-<h2 id="on-mac-os-x">On Mac OS X</h2>
+<h3 id="on-mac-os-x">On Mac OS X</h3>
 <ul>
 <li>Scroll down a little bit, you will see some download links designed for different version of your OS. If you have Mac OS X 10.9 (Mavericks) or higher, choose <strong>R-3.3.1.pkg</strong>. If your OS version is older than that, there is a link of an older version of R right below it.</li>
 <li>Once it is downloaded, double-click on the installer. You may take all of the defaults.</li>
 </ul>
-<h2 id="on-linux-systems">On Linux Systems</h2>
+<h3 id="on-linux-systems">On Linux Systems</h3>
 <ul>
 <li>After clicking <strong>Download R for Linux</strong>, you will be shown different folders for different Linux distros. Select your distro, and proceed as directed.</li>
 </ul>
-<h1 id="installing-rstudio">Installing RStudio</h1>
+<h2 id="installing-rstudio">Installing RStudio</h2>
 <p>You will not use R directly in this course. Its UI is very basic and not beautiful. Instead, you will use RStudio, an enhanced interface that will make interacting with R less frustrating.</p>
 <ul>
 <li>Go to <a href="https://www.rstudio.com/products/rstudio/download3/">RStudio download page</a>. We will use the Free License Desktop version. Download the appropriate installer for your operating system (Windows, Mac OS X, or Linux).</li>
 <li>Once it is downloaded, run the RStudio installer and take all of the defaults: In Windows, double-click on the RStudio installer to start the installation; in Mac OS X, double-click on the downloaded RStudio disk-image file, and drag the <em>RStudio</em> icon to the <em>Applications</em> folder.</li>
 <li>When you first run RStudio (in Windows, if you don't see the <em>RStudio</em> icon on the desktop, click on Start icon and type in <code>rstudio</code> in the search box), it should detect your R installation and start the R console.<br />
 </li>
-<li>To configure RStudio to your taste, select <em>Tools &gt; Global Options</em> (Windows) or <em>RStudio &gt; Preferences</em> (Mac OS X) from the RStudio menus. In particular, I suggest that on the <em>General</em> options screen you <strong>deselect</strong> <em>Restore .RData into workspace at startup</em>, and set <em>Save workspace to .RData on exit</em> to <strong>Never</strong>.</li>
-</ul>
+<li>To configure RStudio to your taste, select <em>Tools &gt; Global Options</em> (Windows) or <em>RStudio &gt; Preferences</em> (Mac OS X) from the RStudio menus. In particular, I suggest that on the <em>General</em> options screen you <strong>deselect</strong> <em>Restore .RData into workspace at startup</em>, and set <em>Save workspace to .RData on exit</em> to <strong>Never</strong>.
 </div>
 </div>
 <div class="navbar navbar-fixed-bottom navbar-inverse">
@@ -914,143 +912,15 @@ Preparing for The First Class
 <p class="navbar-text">
 Toggle
 </p>
-</li>
+</li></li>
+</ul>
 <li class="active">
 <a href="#" type="figure" class="toggle-global">Figures</a>
 </li>
 </ul>
-<ul class="nav navbar-nav navbar-left">
-<li class="dropup">
-<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bootstrap theme <b class="caret"></b></a>
-<ul class="dropdown-menu">
-<li>
-<a class="theme-switch" title="Default" href="#">Default</a>
-</li>
-<li class="active">
-<a class="theme-switch" title="Amelia" href="#">Amelia</a>
-</li>
-<li>
-<a class="theme-switch" title="Cerulean" href="#">Cerulean</a>
-</li>
-<li>
-<a class="theme-switch" title="Cosmo" href="#">Cosmo</a>
-</li>
-<li>
-<a class="theme-switch" title="Cyborg" href="#">Cyborg</a>
-</li>
-<li>
-<a class="theme-switch" title="Journal" href="#">Journal</a>
-</li>
-<li>
-<a class="theme-switch" title="Flatly" href="#">Flatly</a>
-</li>
-<li>
-<a class="theme-switch" title="Readable" href="#">Readable</a>
-</li>
-<li>
-<a class="theme-switch" title="Simplex" href="#">Simplex</a>
-</li>
-<li>
-<a class="theme-switch" title="Slate" href="#">Slate</a>
-</li>
-<li>
-<a class="theme-switch" title="Spacelab" href="#">Spacelab</a>
-</li>
-<li>
-<a class="theme-switch" title="United" href="#">United</a>
-</li>
-</ul>
-</li>
-</ul>
-<ul class="nav navbar-nav navbar-left">
-<li class="dropup">
-<a href="#" class="dropdown-toggle" data-toggle="dropdown">Code highlighting <b class="caret"></b></a>
-<ul class="dropdown-menu">
-<li>
-<a class="highlight-switch" title="HighlightJs" href="#">HighlightJs</a>
-</li>
-<li>
-<a class="highlight-switch" title="Dark" href="#">Dark</a>
-</li>
-<li>
-<a class="highlight-switch" title="Far" href="#">Far</a>
-</li>
-<li>
-<a class="highlight-switch" title="Idea" href="#">Idea</a>
-</li>
-<li class="active">
-<a class="highlight-switch" title="Sunburst" href="#">Sunburst</a>
-</li>
-<li>
-<a class="highlight-switch" title="Zenburn" href="#">Zenburn</a>
-</li>
-<li>
-<a class="highlight-switch" title="Visual Studio" href="#">Visual Studio</a>
-</li>
-<li>
-<a class="highlight-switch" title="Ascetic" href="#">Ascetic</a>
-</li>
-<li>
-<a class="highlight-switch" title="Magula" href="#">Magula</a>
-</li>
-<li>
-<a class="highlight-switch" title="Github" href="#">Github</a>
-</li>
-<li>
-<a class="highlight-switch" title="Google Code" href="#">Google Code</a>
-</li>
-<li>
-<a class="highlight-switch" title="Brown Paper" href="#">Brown Paper</a>
-</li>
-<li>
-<a class="highlight-switch" title="School Book" href="#">School Book</a>
-</li>
-<li>
-<a class="highlight-switch" title="IR Black" href="#">IR Black</a>
-</li>
-<li>
-<a class="highlight-switch" title="Solarized - Dark" href="#">Solarized - Dark</a>
-</li>
-<li>
-<a class="highlight-switch" title="Solarized - Light" href="#">Solarized - Light</a>
-</li>
-<li>
-<a class="highlight-switch" title="Arta" href="#">Arta</a>
-</li>
-<li>
-<a class="highlight-switch" title="Monokai" href="#">Monokai</a>
-</li>
-<li>
-<a class="highlight-switch" title="Xcode" href="#">Xcode</a>
-</li>
-<li>
-<a class="highlight-switch" title="Pojoaque" href="#">Pojoaque</a>
-</li>
-<li>
-<a class="highlight-switch" title="Rainbow" href="#">Rainbow</a>
-</li>
-<li>
-<a class="highlight-switch" title="Tomorrow" href="#">Tomorrow</a>
-</li>
-<li>
-<a class="highlight-switch" title="Tomorrow Night" href="#">Tomorrow Night</a>
-</li>
-<li>
-<a class="highlight-switch" title="Tomorrow Night Bright" href="#">Tomorrow Night Bright</a>
-</li>
-<li>
-<a class="highlight-switch" title="Tomorrow Night Blue" href="#">Tomorrow Night Blue</a>
-</li>
-<li>
-<a class="highlight-switch" title="Tomorrow Night Eighties" href="#">Tomorrow Night Eighties</a>
-</li>
-</ul>
-</li>
-</ul>
 </div>
 </div>
 </div>
-<link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" title="Default" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/amelia/bootstrap.min.css" title="Amelia" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/cerulean/bootstrap.min.css" title="Cerulean" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/cosmo/bootstrap.min.css" title="Cosmo" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/cyborg/bootstrap.min.css" title="Cyborg" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/journal/bootstrap.min.css" title="Journal" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/flatly/bootstrap.min.css" title="Flatly" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/readable/bootstrap.min.css" title="Readable" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/simplex/bootstrap.min.css" title="Simplex" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/slate/bootstrap.min.css" title="Slate" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/spacelab/bootstrap.min.css" title="Spacelab" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/united/bootstrap.min.css" title="United" media="screen"></link><link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/default.min.css" title="HighlightJs" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/dark.min.css" title="Dark" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/far.min.css" title="Far" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/idea.min.css" title="Idea" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/sunburst.min.css" title="Sunburst" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/zenburn.min.css" title="Zenburn" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/vs.min.css" title="Visual Studio" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/ascetic.min.css" title="Ascetic" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/magula.min.css" title="Magula" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/github.min.css" title="Github" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/googlecode.min.css" title="Google Code" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/brown_paper.min.css" title="Brown Paper" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/school_book.min.css" title="School Book" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/ir_black.min.css" title="IR Black" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/solarized_dark.min.css" title="Solarized - Dark" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/solarized_light.min.css" title="Solarized - Light" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/arta.min.css" title="Arta" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/monokai.min.css" title="Monokai" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/xcode.min.css" title="Xcode" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/pojoaque.min.css" title="Pojoaque" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/rainbow.min.css" title="Rainbow" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/tomorrow.min.css" title="Tomorrow" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/tomorrow-night.min.css" title="Tomorrow Night" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/tomorrow-night-bright.min.css" title="Tomorrow Night Bright" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/tomorrow-night-blue.min.css" title="Tomorrow Night Blue" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/tomorrow-night-eighties.min.css" title="Tomorrow Night Eighties" media="screen"></link>
 </div>
 <div id="push">
 
@@ -1062,7 +932,7 @@ Styled with <a href="https://github.com/jimhester/knitrBootstrap">knitrBootstrap
 </p>
 </div>
 </div>
-<link rel="stylesheet" id="theme" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/amelia/bootstrap.min.css" media="screen"></link><link rel="stylesheet" id="highlight" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/sunburst.min.css" media="screen"></link>
+<link rel="stylesheet" id="theme" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/cosmo/bootstrap.min.css" media="screen"></link><link rel="stylesheet" id="highlight" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/sunburst.min.css" media="screen"></link>
 </div>
 </body>
 </html>
