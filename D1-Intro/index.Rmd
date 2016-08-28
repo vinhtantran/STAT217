@@ -1,177 +1,238 @@
 ---
-title: "R Intro"
+title: "R and RStudio"
 output:
   html_document:
-    theme: journal
-    highlight: tango
+    theme: cosmo
+    highlight: pygments
     toc: true
     toc_float: true
-    keep_md: true
-widgets: [mathjax, bootstrap, quiz]
-date: "`r format(Sys.time(), '%d %B, %Y')`"
-author: Ferris, Tran
+    css: ../css/styles.css
 ---
-
-## Getting Started
-
-```{r setup, echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE}
-library(knitr)
-knitr::opts_chunk$set(echo = T, 
-                      message = F, 
-                      warning = F, 
-                      tidy = F, 
-                      fig.align = "center", 
-                      fig.width = 8, 
-                      fig.height = 5, 
-                      cache = F)
-set.seed(42)
+```{r child = '../common/config.Rmd'}
 ```
 
+# Getting Started with R Console
 
-Once you have opened RStudio you can begin to use R.  In some ways, R is very similar to a calculator.  You can do basic addition in it by running commands in the console.
-
-```{r addition}
+Once you have opened RStudio you can begin to use R.  R is an **interpreted language**, which means it answers your commands one by one in the console (the left half of the RStudio window). If you type
+```{r addition, eval=F}
+3 + 4
+```
+and press *Enter*, the console respond right away (you will not see `##` in the console, it is here to separate inputs and outputs)
+```{r addition2, echo=F}
 3 + 4
 ```
 
+## TryIt!
 
-## Testing Out R
+Use R to add 615 to 247, then divided by 3, type `(615 + 247)/3` into the console then hitting Enter. What is the answer? 
 
-1. Use R to add $615+247$ by typing `615 + 247` into the console then hitting Enter.
+# R Scripts
 
-*** .hint
-You can just copy and paste into the R console.
-
-*** .explanation
-1. <span class='answer'>`r 615+247`</span>
-
-## Creating Variables
-
-One of the nice things about R is that you can store information.  Here, assign the letter `x` to have a value of 3 by typing the following code into the console and hitting Enter.
-
-```{r store-x}
-x <- 3
-```
-
-The `<-` symbol is the assignment operator in R.  Now, any time I type `x` R will return 3.
-
-```{r print-x}
-x
-```
-
-I can now use `x` for addition
-
-```{r add-x}
-x + 4
-```
-
-
-
-## Making Your New Variable
-
-Copy and paste the following code into the R console.  This will assign `y` to have the value of 1024.
-
-```{r assign-y}
-y <- 1024
-```
-
-If you want to check and make sure this worked, type in `y` in the R console then hit enter.  If the object was correctly assigned then R should return 1024.  Otherwise, an error message will be printed.
-
-
-
-## Using Assigned Variables
-
-Now that you have assigned `x` to be 3 and `y` to be 1024, let's use R to do some addition.
-
-1. What is $3 + 1024 + 698$?  Copy and paste `x+y+698` into the R console and hit enter.
-
-
-*** .hint
-Make sure you have assigned `x` to have the value of 3 and `y` to have the value of 1024
-
-*** .explanation
-1. <span class='answer'>1725</span>
-
- &radio
-## An Error in R
-
-Sometimes R doesn't understand what we are trying to tell it.  It will generate an error.  Copy and paste `x+Y+698` and hit enter.  A bright red error message should occur.  Why is this?
-
-1. R hates me 
-2. _R is case sensitive and I used a capital Y_
-3. R can only execute commands once
-
-*** .hint
-Note that the "Y" has been capitalized
-
-
-## R Scripts
-
-Scripts are very useful in R because the allow us to save the commands that we've run.  To open up a script, click **File** -> **New File** -> **R Script**.  A new script should appear and your screen should look something like this.
+Instead of typing every commands in the console, and looking at your workflow "flows away", we can use a **script**. Scripts are very useful in R because they allow us to save the commands that we've run.  To open up a script, click *File* -> *New File* -> *R Script*. You should see that the console pane now moves down to reveal a new ***Source pane***.
 
 <iframe src='img/new-r-script.png' width='700' height='400' frameborder='0'>
 </iframe>
 
-You can type a line of code into the R script, then hit Ctrl+Enter to run that line.  Try typing 3+4 into your new R script then running that.  It should look something like
+You can type a line of code into the R script, then hit `Ctrl+Enter` in Windows or `Command+Enter` on Mac to run that line.  Try typing 3+4 into your new R script then running that, look at how that line is copied to Console and run. It should look something like
 
 <iframe src='img/r-script-line-of-code.png' width='700' height='600' frameborder='0'>
 </iframe>
 
+# Creating Variables
 
-## Mock Jury Data
+One of the nice things about R is that you can store a value (e.g. 4) or an object (e.g. a function description) into a **variable** in R. Later, you can use that variable to access to the information stored within it.
 
-Here, we'll need to reproduce the plots from Wednesday in class.  To begin, we need to load the `heplots` package.  Make sure the `heplots` package is installed (see the last paragraph of page 12 in your book) then type `require(heplots)` into your R script on a new line and run that line of code.  This loads all the code and datasets associated with the `heplots` package.
+The following command assigns value `4` to a variable `my.var`
+
+```{r store}
+my.var <- 4
+```
+
+## TryIt: Creating a Variable
+
+To help you try out the code, I embed the Source and Console panes into this page. Complete the code in the editor as instructed.
+
+```{r loadtut, echo=FALSE}
+tutorial::go_interactive(greedy=FALSE, height=200)
+```
+
+```{r ex="create_a", type="sample-code", tut=TRUE}
+# Create a variable a, equal to 5
+a <-
+
+# Print out a
+a
+```
+
+```{r ex="create_a", type="solution", tut=TRUE}
+# Create a variable a, equal to 5
+a <- 5
+
+# Print out a
+a
+```
+
+```{r ex="create_a", type="sct", tut=TRUE}
+test_object("a")
+test_output_contains("a", incorrect_msg = "Make sure to print `a`.")
+success_msg("Great!")
+```
+> **Note**: Anything on a line that appears after `#` is considered a comment and will be ignored by the interpreter. Commenting in your code is a good programming practice to explain what you're doing to the reader, and to the future you also. 
+
+## TryIt: Using Assigned Variables
+
+The following template gives you the value of `a` is 5. Create another variable `b` with value 6, then add them together to find the total. Finally, create a new variable `c` taking the value of the above addition.
+
+```{r ex="add_ab", type="sample-code", tut=TRUE}
+# Create variables a and b
+a <- 5
+
+
+# Add these two variables together
+
+
+# Create variable c as the sum of a and b
+
+
+```
+
+```{r ex="add_ab", type="solution", tut=TRUE}
+# Create variables a and b
+a <- 5
+b <- 6
+
+# Add these two variables together
+a + b
+
+# Create variable c as the sum of a and b
+c <- a + b
+```
+
+```{r ex="add_ab", type="sct", tut=TRUE}
+test_object("a", incorrect_msg = "Keep the line that assigns 5 to `a`.")
+test_object("b", incorrect_msg = "Keep the line that assigns 6 to `b`.")
+test_output_contains("a + b",
+                     incorrect_msg = "Make sure to print out the result of adding `a` and `b` by typing `a + b`")
+msg <- "Have you used `c <- a + b` to create the `c` variable?"
+test_object("c", undefined_msg = msg, incorrect_msg = msg)
+success_msg("Nice one! The great advantage of doing calculations with variables is reusability. If you just change `a` to equal 12 instead of 5 and rerun the script, `c` will automatically update as well.")
+```
+
+## An Error in R
+Sometimes R doesn't understand what we are trying to tell it.  It will generate an error.  Try running the following code.
+
+```{r ex="error", type="pre-exercise-code", tut=TRUE}
+a <- 5
+b <- 6
+c <- a + b
+```
+
+```{r ex="error", type="sample-code", tut=TRUE}
+# Add two variables together
+a + B
+```
+
+```{r ex="error", type="sct", tut=TRUE}
+success_msg("Great. Now answer the question below.")
+```
+
+
+```{r error, echo=FALSE}
+x <- "A bright red error message should occur.  Why is this?
+
+1. R hates me 
+2. _R is case sensitive and I used a capital B_
+3. R can only execute commands once
+"
+
+hint <- "Note that the `B` has been capitalized"
+
+quiz(x, hint)
+```
+
+
+
+# MockJury Data
+
+*Let's return to RStudio.*
+
+## Installing R Package
+R is popular not only because it is open source (and free), but also because it is a *framework* where people can create their own functions and distribute them to others under the form of **packages**.
+
+The data set called `MockJury` will be used as the example in Wednesday class. Let's try it out today. The data set is built within the `heplots` package. To begin, we need to install it the package (we just need to do it once!). Look at the bottom right pane. There you can choose *Packages* tab, and click *Install*. Type `heplots` when prompted and click ``Install``. That easy!
+
+To load `heplots` package, type `require(heplots)` into your R script on a new line and run that line of code.  This loads all the code and data sets associated with the `heplots` package.
 
 ```{r load-heplots}
 require(heplots)
 ```
 
-We need to do some work to set up the data.  You can just copy and paste this section into your script and run it.
+Let's learn a little bit about the data set `MockJury` by loading R help page on the data by typing
+```{r help1, eval=FALSE}
+help(MockJury)
+```
+or
+```{r help2, eval=FALSE}
+?MockJury
+```
+
+The bottom right pane now changes into *Help* tab with the information about the data set. Read the data description and answer the following question
+
+```{r datadesc, echo=FALSE}
+x <- "How many levels of attractiveness were recorded?
+
+1. 1
+2. 2
+3. _3_
+"
+
+hint <- "Beautiful, average, and unattractive."
+
+quiz(x, hint)
+```
+
+Let's load the data set to use.
 
 ```{r mock-jury}
 data(MockJury)
-MockJury <- subset(MockJury, Attr != "Beautiful", select = c(Attr, Crime, Years, Serious, independent, sincere))
-rownames(MockJury) <- 1:nrow(MockJury)
 ```
 
-The dataset is now named "MockJury."  You can now view it by running
+The data set is now named `MockJury`.  You can now view it in the table form in Source pane by running (note the capital "V")
 
 ```{r view-data, eval=FALSE}
-MockJury
+View(MockJury)
 ```
 
 
-## Some R commands
+## Some R Commands on Data Set
 
-Instead of viewing the entire dataset, you can just the first six rows using "head"
-
+Instead of viewing the entire data set, you can just show the first six rows using `head`. Change back into the script and run. The output is long and it may be break into another block like below.
 ```{r head-data}
 head(MockJury)
 ```
 
 Try
-
 ```{r tail-data}
 tail(MockJury)
 ```
 
- &radio
-## The `tail` function
-
-What does `tail(MockJury)` do?
+```{r tail, echo=FALSE}
+x <- "What does `tail(MockJury)` do?
 
 1. Prints the first six rows of the dataset
 2. Prints six randomly selected rows from the dataset
 3. _Prints the last six rows of the dataset_
 4. Summarizes the dataset
+"
 
-*** .hint
-Look at the row numbers
+hint <- "Look at the row numbers."
 
+quiz(x, hint)
+```
  
 ## Selecting Variables
 
-Each column in the dataset is named (these named columns are called variables).  You can tell R to only print the "Years" variable using the dollar sign.
+Each column in the data set is named (these named columns are called variables).  You can tell R to only print the "Years" variable using the dollar sign.
 
 ```{r data-years}
 MockJury$Years
@@ -196,9 +257,11 @@ summary(MockJury$Years)
 
 ## Plotting in R
 
-We can use the `hist` and `boxplot` functions to make histograms and boxplots of the Years variable.
+We can use the `hist` and `boxplot` functions to make histograms and boxplots of the Years variable. The result will show in the bottom right pane, *Plots* tab.
 
 ```{r plots}
 hist(MockJury$Years)
 boxplot(MockJury$Years)
 ```
+
+

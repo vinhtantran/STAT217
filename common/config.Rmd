@@ -1,0 +1,44 @@
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE}
+knitr::opts_chunk$set(echo = T, 
+                      message = F, 
+                      warning = F, 
+                      tidy = F, 
+                      fig.align = "center", 
+                      fig.width = 8, 
+                      fig.height = 5, 
+                      cache = F)
+set.seed(42)
+```
+<!-- Embed the quiz css and js into the file -------------------------------------->
+<link rel=stylesheet href="../libraries/widgets/quiz/css/demo.css">
+</link>
+
+<script src="../libraries/widgets/quiz/js/jquery.quiz.js">
+</script>
+<script src="../libraries/widgets/quiz/js/mustache.min.js">
+</script>
+<script src="../libraries/widgets/quiz/js/quiz-app.js">
+</script>
+<!-- END -------------------------------------------------------------------------->
+
+```{r defineABC$%@, echo=FALSE}
+require(markdown)
+require(htmltools)
+
+quiz <- function(x, hint="") {
+  tags$div(class = 'quiz quiz-single well',
+    HTML(renderMarkdown(text = x)),
+    quiz_buttons(),
+    tags$div(class= "quiz-hint", p(hint))
+  )
+}
+
+quiz_buttons <- function(){
+  tagList(
+    tags$button(class = "quiz-submit btn btn-primary", "Submit"),
+    tags$button(class = "quiz-toggle-hint btn btn-info", "Show Hint"),
+    tags$button(class = "quiz-show-answer btn btn-success", "Show Answer"),
+    tags$button(class = "quiz-clear btn btn-danger", "Clear")
+  )
+}
+```
