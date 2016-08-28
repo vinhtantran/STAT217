@@ -322,7 +322,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImEgPC0gNVxuYiA8LSA2XG5jIDwtIGEg
 <div id="installing-r-package" class="section level2">
 <h2>Installing R Package</h2>
 <p>R is popular not only because it is open source (and free), but also because it is a <em>framework</em> where people can create their own functions and distribute them to others under the form of <strong>packages</strong>.</p>
-<p>The data set called <code>MockJury</code> will be used as the example in Wednesday class. Let’s try it out today. The data set is built within the <code>heplots</code> package. To begin, we need to install it the package (we just need to do it once!). Look at the bottom right pane. There you can choose <em>Packages</em> tab, and click <em>Install</em>. Type <code>heplots</code> when prompted and click <code>Install</code>. That easy!</p>
+<p>The data set called <code>MockJury</code> will be used as the example in Wednesday class. Let’s try it out today. The data set is built within the <code>heplots</code> package. To begin, we need to install the package (we need to do it only once!). Look at the bottom right pane. There you can choose <em>Packages</em> tab, and click <em>Install</em>. Type <code>heplots</code> when prompted and click <code>Install</code>. That easy!</p>
 <p>To load <code>heplots</code> package, type <code>require(heplots)</code> into your R script on a new line and run that line of code. This loads all the code and data sets associated with the <code>heplots</code> package.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(heplots)</code></pre></div>
 <p>Let’s learn a little bit about the data set <code>MockJury</code> by loading R help page on the data by typing</p>
@@ -354,7 +354,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImEgPC0gNVxuYiA8LSA2XG5jIDwtIGEg
 </div>
 <div id="some-r-commands-on-data-set" class="section level2">
 <h2>Some R Commands on Data Set</h2>
-<p>Instead of viewing the entire data set, you can just show the first six rows using <code>head</code>. Change back into the script and run. The output is long and it may be break into another block like below.</p>
+<p>Instead of viewing the entire data set, you can just show the first six rows using <code>head</code>. Change back into the script and run. The output is long and it may be cut into another block like below.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(MockJury)</code></pre></div>
 <pre><code>##        Attr    Crime Years Serious exciting calm independent sincere warm
 ## 1 Beautiful Burglary    10       8        6    9           9       8    5
@@ -407,7 +407,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImEgPC0gNVxuYiA8LSA2XG5jIDwtIGEg
 </div>
 <div id="selecting-variables" class="section level2">
 <h2>Selecting Variables</h2>
-<p>Each column in the data set is named (these named columns are called variables). You can tell R to only print the “Years” variable using the dollar sign.</p>
+<p>Each column in the data set is named (these named columns are called variables). You can tell R to only print the “Years” variable using the dollar sign. The number in bracket gives you the position of the next value within a variable.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">MockJury$Years</code></pre></div>
 <pre><code>##   [1] 10  3  5  1  7  7  3  7  2  3  5  1  1  1  2  2 10 10  3  4  7  1  4
 ##  [24]  3  2  8  8  1  1  5  7  1  5  2 12 10  1  6  2  5 12  6  3  8  4 10

@@ -164,7 +164,7 @@ quiz(x, hint)
 ## Installing R Package
 R is popular not only because it is open source (and free), but also because it is a *framework* where people can create their own functions and distribute them to others under the form of **packages**.
 
-The data set called `MockJury` will be used as the example in Wednesday class. Let's try it out today. The data set is built within the `heplots` package. To begin, we need to install it the package (we just need to do it once!). Look at the bottom right pane. There you can choose *Packages* tab, and click *Install*. Type `heplots` when prompted and click ``Install``. That easy!
+The data set called `MockJury` will be used as the example in Wednesday class. Let's try it out today. The data set is built within the `heplots` package. To begin, we need to install the package (we need to do it only once!). Look at the bottom right pane. There you can choose *Packages* tab, and click *Install*. Type `heplots` when prompted and click ``Install``. That easy!
 
 To load `heplots` package, type `require(heplots)` into your R script on a new line and run that line of code.  This loads all the code and data sets associated with the `heplots` package.
 
@@ -211,7 +211,7 @@ View(MockJury)
 
 ## Some R Commands on Data Set
 
-Instead of viewing the entire data set, you can just show the first six rows using `head`. Change back into the script and run. The output is long and it may be break into another block like below.
+Instead of viewing the entire data set, you can just show the first six rows using `head`. Change back into the script and run. The output is long and it may be cut into another block like below.
 ```{r head-data}
 head(MockJury)
 ```
@@ -237,7 +237,7 @@ quiz(x, hint)
  
 ## Selecting Variables
 
-Each column in the data set is named (these named columns are called variables).  You can tell R to only print the "Years" variable using the dollar sign.
+Each column in the data set is named (these named columns are called variables).  You can tell R to only print the "Years" variable using the dollar sign. The number in bracket gives you the position of the next value within a variable.
 
 ```{r data-years}
 MockJury$Years
