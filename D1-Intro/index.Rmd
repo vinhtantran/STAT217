@@ -24,8 +24,12 @@ and press *Enter*, the console respond right away (you will not see `##` in the 
 
 ## TryIt!
 
-Use R to add 615 to 247, then divided by 3, type `(615 + 247)/3` into the console then hitting Enter. What is the answer? 
+Use R to add 615 to 247, then divided by 3, type `(615 + 247)/3` into the console then hitting Enter. Check your answer, is it
+```{r addition3, echo=F}
+(615 + 247)/3
+```
 
+---
 # R Scripts
 
 Instead of typing every commands in the console, and looking at your workflow "flows away", we can use a **script**. Scripts are very useful in R because they allow us to save the commands that we've run.  To open up a script, click *File* -> *New File* -> *R Script*. You should see that the console pane now moves down to reveal a new ***Source pane***.
@@ -38,6 +42,7 @@ You can type a line of code into the R script, then hit `Ctrl+Enter` in Windows 
 <iframe src='img/r-script-line-of-code.png' width='700' height='600' frameborder='0'>
 </iframe>
 
+---
 # Creating Variables
 
 One of the nice things about R is that you can store a value (e.g. 4) or an object (e.g. a function description) into a **variable** in R. Later, you can use that variable to access to the information stored within it.
@@ -151,7 +156,7 @@ quiz(x, hint)
 ```
 
 
-
+---
 # MockJury Data
 
 *Let's return to RStudio.*
