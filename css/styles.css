@@ -1,11 +1,17 @@
-.title, .date {
+.title {
   padding-top: 30px;
   padding-bottom: 30px;
+  padding-left: 10px;
   color: #ffffff;
   background-color: #2780e3;
   border-color: #2780e3;
   margin-bottom: 15px;
   font-weight: bold;
+  text-align: center;
+}
+
+.date {
+  text-align: center;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -15,4 +21,23 @@ h1, h2, h3, h4, h5, h6{
 blockquote {
   color:#902000;
   font-size:11pt;
+}
+
+hr {
+  color: #2780e3;
+  background-color: #2780e3;
+  height: 1px;
+}
+
+@media print{
+  body{ background-color:#FFFFFF; background-image:none; color:#000000 }
+  #ad{ display:none;}
+  #leftbar{ display:none;}
+  #contentarea{ width:100%;}
+  #TOC{display:none;}
+  .title { padding-left: 0px;}
+  h1 { font-size: 11px;}
+  h2 { font-size: 18px;}
+  h3 { font-size: 16px;}
+  hr {display:none;}
 }

@@ -42,3 +42,7 @@ quiz_buttons <- function(){
   )
 }
 ```
+
+```{r loadtut, echo=FALSE}
+tutorial::go_interactive(greedy=FALSE, height=150)
+```

@@ -1,5 +1,6 @@
 ---
 title: "Chapter 0: R and RStudio"
+date: August 29, 2016
 output:
   html_document:
     theme: cosmo
@@ -30,6 +31,7 @@ Use R to add 615 to 247, then divided by 3, type `(615 + 247)/3` into the consol
 ```
 
 ---
+
 # R Scripts
 
 Instead of typing every commands in the console, and looking at your workflow "flows away", we can use a **script**. Scripts are very useful in R because they allow us to save the commands that we've run.  To open up a script, click *File* -> *New File* -> *R Script*. You should see that the console pane now moves down to reveal a new ***Source pane***.
@@ -43,6 +45,7 @@ You can type a line of code into the R script, then hit `Ctrl+Enter` in Windows 
 </iframe>
 
 ---
+
 # Creating Variables
 
 One of the nice things about R is that you can store a value (e.g. 4) or an object (e.g. a function description) into a **variable** in R. Later, you can use that variable to access to the information stored within it.
@@ -56,10 +59,6 @@ my.var <- 4
 ## TryIt: Creating a Variable
 
 To help you try out the code, I embed the Source and Console panes into this page. Complete the code in the editor as instructed.
-
-```{r loadtut, echo=FALSE}
-tutorial::go_interactive(greedy=FALSE, height=200)
-```
 
 ```{r ex="create_a", type="sample-code", tut=TRUE}
 # Create a variable a, equal to 5
@@ -157,6 +156,7 @@ quiz(x, hint)
 
 
 ---
+
 # MockJury Data
 
 *Let's return to RStudio.*
