@@ -269,4 +269,8 @@ hist(MockJury$Years)
 boxplot(MockJury$Years)
 ```
 
+---
 
+# Want to Know More about R?
+
+There is an intro R course at [Data Camp](https://www.datacamp.com/) with free registration. They cover most of basic R with good examples and an online edtior, which I embedded in this activity.
