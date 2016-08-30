@@ -2,7 +2,7 @@
 knitr::opts_chunk$set(echo = T, 
                       message = F, 
                       warning = F, 
-                      tidy = F, 
+                      tidy = T, 
                       fig.align = "center", 
                       fig.width = 8, 
                       fig.height = 5, 
@@ -19,26 +19,64 @@ set.seed(42)
 </script>
 <script src="../libraries/widgets/quiz/js/quiz-app.js">
 </script>
+<script src="../libraries/widgets/bootbox/js/bootbox.min.js">
+</script>
 <!-- END -------------------------------------------------------------------------->
 
 ```{r defineABC$%@, echo=FALSE}
 require(markdown)
 require(htmltools)
 
-quiz <- function(x, hint="") {
+quiz <- function(x, hint=NULL, explain=NULL) {
   tags$div(class = 'quiz quiz-single well',
     HTML(renderMarkdown(text = x)),
-    quiz_buttons(),
-    tags$div(class= "quiz-hint", p(hint))
+    quiz_buttons(hint, explain),
+    if (!is.null(hint)) tags$div(class= "quiz-hint", p(hint)),
+    if (!is.null(explain)) tags$div(class= "quiz-explanation", p(explain))
   )
 }
 
-quiz_buttons <- function(){
+quiz_buttons <- function(hint, answer){
   tagList(
     tags$button(class = "quiz-submit btn btn-primary", "Submit"),
-    tags$button(class = "quiz-toggle-hint btn btn-info", "Show Hint"),
-    tags$button(class = "quiz-show-answer btn btn-success", "Show Answer"),
+    if (!is.null(hint)) tags$button(class = "quiz-toggle-hint btn btn-info", "Show Hint"),
+    if (!is.null(answer)) tags$button(class = "quiz-show-answer btn btn-success", "Show Answer"),
     tags$button(class = "quiz-clear btn btn-danger", "Clear")
+  )
+}
+```
+
+```{r definemultitext#*$*#, echo=F}
+mult <- function(x, ans, hint=NULL, explain=NULL) {
+  tags$div(class = 'quiz-multitext',
+    HTML(renderMarkdown(text = x)),
+    quiz_buttons(hint, explain),
+    if (!is.null(hint)) tags$div(class= "quiz-hint", p(hint)),
+    if (!is.null(explain)) tags$div(class= "quiz-explanation", p(explain)),
+    tags$span(class='answer', ans)
+  )
+  
+}
+
+mult1 <- function(x, ans, hint=NULL, explain=NULL) {
+  tags$div(class = 'quiz-multitext',
+    HTML(renderMarkdown(text = x)),
+    quiz_buttons(hint, explain),
+    if (!is.null(hint)) tags$div(class= "quiz-hint", p(hint)),
+    tags$div(class= "quiz-explanation", HTML(renderMarkdown(text=ans)), style="display: none;")
+    
+  )
+  
+}
+```
+
+```{r definecheck, echo=F}
+check <- function(x, hint=NULL, explain=NULL) {
+  tags$div(class = 'quiz quiz-multiple well',
+    HTML(renderMarkdown(text = x)),
+    quiz_buttons(hint, explain),
+    if (!is.null(hint)) tags$div(class= "quiz-hint", p(hint)),
+    if (!is.null(explain)) tags$div(class= "quiz-explanation", p(explain))
   )
 }
 ```
