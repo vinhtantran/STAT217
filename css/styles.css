@@ -30,9 +30,10 @@ hr {
 }
 
 @media print{
-  body{ background-color:#FFFFFF; background-image:none; color:#000000 }
+  body{ background-color:#FFFFFF; background-image:none; color:#000000;}
   #ad{ display:none;}
   #leftbar{ display:none;}
+  iframe {display: none;}
   #contentarea{ width:100%;}
   #TOC{display:none;}
   .title { padding-left: 0px;}
@@ -41,3 +42,17 @@ hr {
   h3 { font-size: 16px;}
   hr {display:none;}
 }
+
+@page  
+{ 
+    size: auto;   /* auto is the initial value */ 
+
+    /* this affects the margin in the printer settings */ 
+    margin: 10mm 7.5mm 10mm 7.5mm;  
+} 
+
+body  
+{ 
+    /* this affects the margin on the content before sending to printer */ 
+    margin: 0px;  
+} 

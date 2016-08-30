@@ -1,13 +1,15 @@
 ---
-title: "Chapter 1: R and Permutation Test"
-date: August 31, 2016
+title: 'Chapter 1: R and Permutation Test'
 output:
   html_document:
-    theme: cosmo
-    highlight: pygments
-    toc: true
-    toc_float: true
     css: ../css/styles.css
+    highlight: pygments
+    theme: cosmo
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    toc: yes
+date: "August 31, 2016"
 ---
 
 ```{r child = '../common/config.Rmd'}
@@ -72,7 +74,7 @@ favstats(MockJury$Year)
 
   What information about the data can you glean from this summary?
 
-  <textarea class="form-control" rows="5"></textarea>
+  <textarea class="form-control" rows="3"></textarea>
 
 ### 3. Plots
 
@@ -93,7 +95,7 @@ boxplot(MockJury$Years, main="Years")
 
 What can you say about the distribution of the response variable from these plots?
 
-<textarea class="form-control" rows="5"></textarea>
+<textarea class="form-control" rows="3"></textarea>
 
 <br/>
 We originally wanted to examine the relationship between sentence length and attractiveness. So it's better to have a side-by-side plot, where each group of interest is shown using the same y-axis scaling. We can make
@@ -110,7 +112,7 @@ What does the width of the plot relate to? Which group has the largest range of
 sentence lengths? Based on these plots, is it plausible to suspect that unattractive women are given longer
 sentences?
 
-<textarea class="form-control" rows="5"></textarea>
+<textarea class="form-control" rows="3"></textarea>
 
 ### 4. Compare Two Groups
 
@@ -209,7 +211,7 @@ mult1(x, ans)
 
 In Stat 216 we used computer applets to make null distributions when we wanted to test our null hypothesis using randomization methods. In this class we're going to use R. But the idea is the same. Let's review the idea.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/9oD1dn2zO0U" frameborder="0" allowfullscreen></iframe>
+<iframe width="300" height="200" src="https://www.youtube.com/embed/9oD1dn2zO0U" frameborder="0" allowfullscreen></iframe>
 
 ```{r shuffleidea, echo=F}
 x <- "How can we shuffle the dots in two groups?
@@ -283,7 +285,7 @@ abline(v = -Tobs, lwd = 2, col="red")
 
 What can you see from the above plots? Where is the distribution centered? Why does it make sense?
 
-<textarea class="form-control" rows="5"></textarea>
+<textarea class="form-control" rows="3"></textarea>
 
 <br/>
 The last piece of information we need for our hypothesis test is a p-value, which I informally think as **"the measure of surprise"**. Formally, it's the **probability of getting a value that is as extreme or more extreme than the observed result, assuming that the null hypothesis is true**. We can get this from R using the following code.
@@ -318,5 +320,5 @@ quiz(x)
 
 What do you conclude? Write a conclusion in full and coherent sentence to answer the research question. Include the scope of inference.
 
-<textarea class="form-control" rows="5"></textarea>
+<textarea class="form-control" rows="3"></textarea>
 
