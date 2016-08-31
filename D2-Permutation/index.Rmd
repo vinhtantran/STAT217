@@ -308,7 +308,7 @@ quiz(x)
 
 ### 7. Conclusion and Scope of Inference
 ```{r decision, echo=F}
-x <- "What is your decision for the 217 data? Use a significance level of 0.05?
+x <- "What is your decision for the MockJury data? Use a significance level of 0.05?
 
 1. Reject the null
 2. Accept the null

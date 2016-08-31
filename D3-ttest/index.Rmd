@@ -1,0 +1,212 @@
+---
+title: 'Chapter 1: Two Sample t-Test'
+output:
+  html_document:
+    css: ../css/styles.css
+    highlight: pygments
+    theme: cosmo
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    toc: yes
+date: "September 2, 2016"
+---
+
+```{r child = '../common/config.Rmd'}
+```
+
+## Previously in Stat 217...
+We tested a hypothesis that people perceived as unattractive may experience some types of discrimination. The permutation test was used to compare the sentence length that male jurors gave to female defendants that were already divided into "Average" and "Unattractive" categories. We found some evidence that the discrimination exists, but the scope of inference is limited. The result only applies to the participated subjects and we cannot say there is an effect of attractiveness to sentence lengths.
+
+Randomization methods, like permutation test, are what called **nonparametric** that often make fewer assumptions. We used the computer to shuffle, sample, and simulate observations.
+
+Today we will focus on a **parametric** method, which makes assumptions about the distribution of the test statistic. We use theoretical distributions (like a Normal or t distribution) to compare a standardized test statistic to and get p-value. We'll use the **two independent sample t-test** method.
+
+This is the code to help you start with necessary data set.
+
+```{r loading, results='hide', message=FALSE}
+# Load packages
+require(heplots)
+require(mosaic)
+require(beanplot)
+
+# Load the data set
+data(MockJury) 
+# Remove Beautiful group
+MockJury2 <- MockJury[MockJury$Attr != "Beautiful", ] 
+MockJury2$Attr <- factor(MockJury2$Attr) 
+```
+
+## Data Analysis by Two Independent Sample t-Test Method
+
+### 1. Hypotheses
+
+We use the same null and alternative hypothesis as last time
+
+$H_0: \mu_A = \mu_U$ vs. $H_A: \mu_A \neq \mu_U$
+
+State the null and alternative hypotheses in words.
+<textarea class="form-control" rows="3"></textarea>
+
+### 2. Check The Assumptions {#assum}
+
+As the name of test **two independent sample t-test** method suggests, we need to check the data set for the following assumptions before we can proceed with the chosen method.
+
+1. **Independent observations**. An observation in the data set is unrelated to all other observations.
+
+Explain why our data should meet this assumption.
+<textarea class="form-control" rows="3"></textarea>
+
+2. **Equal variances**. Use beanplots to compare the variability between groups. Be careful if group's sizes are greatly different.
+
+```{r beanplots}
+beanplot(Years ~ Attr, data = MockJury2, log = "", col = "bisque", method = "jitter")
+```
+
+What do you think about this assumption? Explain.
+<textarea class="form-control" rows="3"></textarea>
+
+3. 
+    a. (For t-test) **Normal distributions** in each group. Looking for skewness and outliers in the beanplots. Those are problems.
+    b. (For permutation test) **Similar distributions between the groups**. This assumption is **relaxed** if permutation method is used.
+
+In the beanplots above, is there any problem with assumption (3a)? With assumption (3b)?
+<textarea class="form-control" rows="3"></textarea>
+
+### 3. t-Statistic
+Let's for now ignore the assumptions requirements for two independent t-test above (1, 2, and 3a) and proceed with the next step in the non-parametric method.
+
+In this class we're going to use the following formula for t:
+
+$$t = \frac{\bar{x}_1 - \bar{x}_2}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}, \,\, \, \textrm{where } s_p = \sqrt{\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s^2_2}{n_1 + n_2 - 2}}$$
+ 
+ > Note: You may recall using different formula in Stat 216. It turns out there are actually a couple different versions of the test statistic t. The one above may not be correct if two samples are dependent, or don't have equal variances.
+
+The formula looks quite scary, but we can leave it to R to calculate t-statistic for us. The function `t.test`, then accessing to its `statistic` attribute, will give us the t-statistic of the test for difference in mean sentence lengths between "Average" and "Unattractive" female defendants.
+
+```{r tstat}
+t.test(Years ~ Attr, data=MockJury2, var.equal = TRUE)$statistic
+
+```
+
+ > Note: t-statistic is a negative number because it uses opposite subtraction order (A - U) from `diffmean` (which uses U - A). Don't worry, it won't affect the result.
+ 
+**Core difference between parametric and non-parametric methods**: If all the assumptions are met, under the null hypothesis, the t-statistic will follow the t-distribution with df = $n_1 + n_2 -2$. So to find the evidence against the null, instead of comparing the observed result with the simulated null distribution in non-parametric method, we will compare the t-statistic with the t$_{df}$ distribution.
+
+ > Note: t-distribution always associates with a degree of freedom. There is no specific t-distribution without degree of freedom.
+ 
+In this analysis, use the following output to find the degree of freedom for this t-distribution.
+```{r summary}
+favstats(Years ~ Attr, data=MockJury2)
+```
+
+```{r df, echo=F}
+x <- "
+1. What is $n_1$?
+2. What is $n_2$?
+3. What is the degree of freedom?
+"
+ans <- "
+1. 38
+2. 37
+3. 73
+"
+mult1(x, ans)
+```
+
+#### Review t-distributions
+```{r tdist, echo=F}
+ xa<-seq(from=-7,to=7,length.out=300)
+ par(mfrow=c(1,1))
+ plot(xa,dt(xa,df=2),type="l",xlab="t-values",ylab="Density",lwd=4,ylim=c(0,0.39),main="Plot of three different t-distributions and the normal curve")
+ lines(xa,dt(xa,df=10),lwd=3,col="grey")
+ lines(xa,dt(xa,df=20),lwd=2)
+ lines(xa,dnorm(xa),lty=2,lwd=2,col="blue")
+ legend("left",legend=c("t(2)","t(10)","t(20)","Normal"),col=c("black","grey","black","blue"),lty=c(1,1,1,2),lwd=c(4,3,2,2))
+```
+
+```{r askt, echo=FALSE}
+x <- "What is the relation between t distribution and normal distribution?
+
+1. t distribution looks more and more like normal distribution when the df gets smaller.
+2. _t distribution looks more and more like normal distribution when the df gets larger._
+"
+quiz(x)
+```
+
+### 4. Find p-value
+
+R has multiple ways to find the p-value for two independent sample t-test. One way of doing it is to follow the definition of p-value. As stated above, p-value can be calculated by comparing the t-statistic (-2.1702) to $t_{73}$. 
+
+```{r plot, echo=F}
+x<-seq(from=-4,to=4,length.out=20)
+ plot(x,dt(x,df=73),col="red",lty=2,lwd=2,type="l",xlab="t-values",ylab="Density",main="Plot of t(73) distribution" )
+ abline(v=-2.1702)
+ abline(v=2.1702)
+```
+
+```{r qt, echo=F}
+x <- "In the plot, the dashed line is $t_{73}$ distribution, the vertical lines are t-statistic (-2.1702) and its opposite value (2.1702). Why do we also put the positive t-statistic in the plot?
+
+1. Because we're doing one-tail test.
+2. _Because we're doing two-tail test._"
+
+quiz(x)
+```
+
+`pt()` function in R will return the p-value.
+
+```{r pvalue1}
+pt(-2.1702,df=73,lower.tail=T) # p-value if it's left-tail test
+2*pt(-2.1702,df=73,lower.tail=T) # p-value if it's two-tail test
+```
+```{r correctp, echo=F}
+x <- "What is the correct p-value for this analysis?
+
+1. 0.0167
+2. _0.033_
+"
+quiz(x)
+```
+
+There's another way to find the p-value for this test, which I called **lazy method**. All you need to do is call `t.test()` function, give it the data set, and make sure `var.equal = TRUE` to match the second assumption. It will find out the degree of freedom, t-statistic, p-value, and another piece of information we'll see more in the next class as well.
+
+```{r pvalue}
+t.test(Years ~ Attr, data=MockJury2, var.equal = TRUE) # By default, it's two-tailed test
+```
+
+The test that the above function performs is two-tailed test by default, which is what we want for the MockJury analysis. If a one-tailed test is needed, you need to specify `alternative=` argument like below.
+
+```{r onetail, eval=FALSE}
+t.test(Years ~ Attr, data=MockJury2, var.equal = TRUE, alternative="greater") # Right-tailed test
+t.test(Years ~ Attr, data=MockJury2, var.equal = TRUE, alternative="less") # Left-tailed test
+```
+### 5. Make Decision
+
+```{r decision, echo=F}
+x <- "What is your decision for the MockJury data? Use a significance level of 0.05?
+
+1. Reject the null
+2. Accept the null
+3. Fail to reject the null
+4. none of the above
+"
+quiz(x)
+```
+
+### 6. Write Conclusion
+
+What do you conclude? Write a conclusion in full and coherent sentence to answer the research question. Include the scope of inference.
+
+<textarea class="form-control" rows="3"></textarea>
+
+## Choosing Between Two Methods
+```{r choose, echo=F}
+x <- "From what you've found when you [check the assumptions](#assum), what would be the better method to use for this analysis?
+
+1. _Non-parametric permutation test._ 
+2. Parametric two independent sample t-test.
+"
+
+quiz(x)
+```
