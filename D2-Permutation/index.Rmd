@@ -218,7 +218,7 @@ x <- "How can we shuffle the dots in two groups?
 
 1. When the alternative hypothesis is assumed to be true, two groups are the same.
 2. _The null hypothesis is that there is no difference between groups, so the observations can move around._
-3. Groups have no effect on the response, so changing group shouldn't affect the result if the null is true.
+3. _Groups have no effect on the response, so changing group shouldn't affect the result if the null is true._
 4. none of these are correct
 "
 check(x)
@@ -228,7 +228,7 @@ check(x)
 x <- "Why do we start by assuming the null is true?
 
 1. Because we know it should be true, and we're trying to prove it.
-1. To build a null distribution and see how unusual the evidence is on that distribution. 
+1. _To build a null distribution and see how unusual the evidence is on that distribution._
 2. We don't have to assume anything.
 "
 quiz(x)
