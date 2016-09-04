@@ -1,5 +1,5 @@
 ---
-title: 'Chapter 1: Confidence Interval and Bootstrapping'
+title: 'Chapter 1 (3): Confidence Interval and Bootstrapping'
 output:
   html_document:
     css: ../css/styles.css

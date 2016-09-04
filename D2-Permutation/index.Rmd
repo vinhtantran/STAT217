@@ -1,5 +1,5 @@
 ---
-title: 'Chapter 1: R and Permutation Test'
+title: 'Chapter 1 (1): R and Permutation Test'
 output:
   html_document:
     css: ../css/styles.css

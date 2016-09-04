@@ -1,5 +1,5 @@
 ---
-title: "Chapter 0: R and RStudio"
+title: "Chapter 0 (2): R and RStudio"
 date: August 29, 2016
 output:
   html_document:

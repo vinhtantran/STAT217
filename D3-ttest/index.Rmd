@@ -1,5 +1,5 @@
 ---
-title: 'Chapter 1: Two Sample t-Test'
+title: 'Chapter 1 (2): Two Sample t-Test'
 output:
   html_document:
     css: ../css/styles.css
