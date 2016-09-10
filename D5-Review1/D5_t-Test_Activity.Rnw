@@ -1,0 +1,389 @@
+\documentclass[12pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% packages
+\usepackage{float} % for better behaved floats
+\usepackage{graphicx} % for pictures
+\usepackage{fancyhdr} % for headers
+\usepackage{verbatim} % displaying r code
+%\usepackage{fancyvrb}
+\usepackage{setspace} % vspace and hspace
+%\usepackage{listings}
+\usepackage{enumitem} % for [label=]
+\usepackage{amsmath}  % math symbols and such
+\usepackage{amssymb}
+\usepackage{lastpage} % for page numerbering
+\usepackage{color}
+\usepackage{multirow}
+% \usepackage[nottoc,numbib]{tocbibind} % Puts references in TOC
+\usepackage{authblk}
+\usepackage{framed}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Uncomment this line to hide the solutions
+\usepackage[forcolorpaper,nopoints,nosolutions]{eqexam}
+
+%% Uncomment this line to show the solutions
+%\usepackage[forcolorpaper,nopoints,solutionsafter]{eqexam}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renameSolnAfterTo{\textcolor{blue}{\textit{Solution:}}}
+\def\exrtnlabelformat{}
+\def\exrtnlabelformatwp{}
+\def\eq@sqslrtnlabel{}
+  % \definecolor{shadecolor}{rgb}{1,0,0}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% margins
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\topmargin}{-1.5cm}
+\setlength{\parskip}{0pt} % No skip line before and after each par
+\setlength{\parindent}{0pt} % No auto-indent
+% \def\fs{\footnotesize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% tell knitr to use smaller font for code chunks
+\ifdefined\knitrout
+\renewenvironment{knitrout}{\begin{footnotesize}}{\end{footnotesize}}
+\else
+  \fi
+\newcommand{\R}{{\sf R} }
+\newcommand{\Rstud}{{\sf Rstudio} }
+
+\newlength{\gap}
+\setlength{\gap}{.2cm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% headers
+\pagestyle{fancy} % headers
+\lhead{STAT 217, Fall 2016}
+\chead{Sep 9}
+\rhead{Name:\hspace{4cm}}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+\renewcommand{\headrulewidth}{2pt}
+% \renewcommand{\footrulewidth}{1pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{center}
+{\Large \bf Activity for 2 independent sample means:} \\
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% R code options
+<<setup, include=FALSE, cache=FALSE>>=
+### set default values for code chunks
+opts_chunk$set(
+  message=F, ## do not show messages on writeup
+  warning=F, ## do not show warnings on writeup
+  fig.width=10, 
+  fig.height=3,
+  out.width='\\linewidth',
+  out.height='0.3\\linewidth',
+  dev='pdf',
+  concordance=TRUE,
+  # results='asis', ## use only if xtable is going to be used a lot
+  size = 'footnotesize',
+  fig.align='center',
+  tidy.opts=list(width.cutoff=68), 
+  tidy=TRUE,
+  comment="##"
+)
+
+### other defaults
+options(
+  replace.assign=TRUE,
+  width=82,
+  # digits = 3,
+  max.print="72",
+  show.signif.stars = FALSE
+)
+
+### load in necessary packages
+require(knitr)
+knit_theme$set('print')
+@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Description of {\tt snow1} dataset}
+
+Karl Wetlaufer, Jordy Hendrikx, and Lucy Marshall wrote a paper for a journal on snow density (the full article is on D2L) and different areas of the West Fork of the Gallatin River Basin in southwest Montana. we will focus on two of the variables the team collected data on: snow depth ({\tt depth}) and forest cover ({\tt cover}). The snow depth was measured in mm and the areas either forested (a 10 was recorded) or unforested (a 0 was recorded). We want to investigate if this data suggest some association between forest cover and snow depth, on average. If there is an association, we would like to know by how much snow depth the areas might differ on average.
+
+\subsection*{Explore the data}
+<<1, echo=F>>=
+snow <- read.csv("snow1.csv", header=T)
+snow$cover <- factor(snow$cover)
+@
+
+<<2b>>=
+# TODO: load in the data and call it snow (on D2L it is snow1)
+
+# look at the summary statistics
+require(mosaic)
+favstats(depth~cover, data=snow)
+@
+
+<<3, fig.width=12, fig.height=4, out.height='0.3\\linewidth'>>=
+# look at the distributions
+par(mfrow=c(1,2))
+boxplot(depth~cover, data=snow, ylab="Depth (in mm)")
+require(beanplot)
+beanplot(depth~cover, data=snow, method="jitter", col="green", ylab="Depth (in mm)")
+@
+
+\begin{exam}{Activity}
+
+\begin{problem}
+Does it appear from the summary measures or from the beanplots that there may be an association between forest cover and snow depth, on average? Explain.
+
+\begin{solution}[2cm]
+Yes, the mean snow depth for forested location appears smaller than the mean snow depth of unforested locations based on the beanplots and the sample means.
+\end{solution}
+\end{problem}
+
+\subsection*{Hypotheses for the test}
+
+\begin{problem*}
+What is the null hypothesis of the test?
+
+\begin{parts}
+\item Using proper notation (making sure to define all parameters used):
+\begin{solution}[2cm]
+$H_0: \mu_{unf} = \mu_{for}$ where $\mu_{unf}$ is the true mean snow depth of unforested locations in the West Fork Basin and $\mu_{for}$ is the true mean snow depth of forested locations in the West Fork Basin.
+\end{solution}
+  \item In words:
+  \begin{solution}[2cm]
+There is no association between forest cover and snow depth in the West Fork Basin.
+\end{solution}
+  \item Write out the null model making sure to define all parameters used:
+  \begin{solution}[2cm]
+$y_{ij} = \mu + \varepsilon_{ij}$ where $\varepsilon_{ij} \sim{} N(0,\sigma^2)$ is the random error and $\mu$ is the true mean snow depth of any location in the West Fork Basin.
+\end{solution}
+\end{parts}
+\end{problem*}
+
+
+\begin{problem*}
+What is the alternative hypothesis of the test?
+
+\begin{parts}
+\item Using proper notation (making sure to define all parameters used):
+\begin{solution}[2cm]
+$H_A: \mu_{unf} \neq \mu_{for}$ where $\mu_{unf}$ is the true mean snow depth of unforested locations in the West Fork Basin and $\mu_{for}$ is the true mean snow depth of forested locations in the West Fork Basin.
+\end{solution}
+  \item In words:
+  \begin{solution}[2cm]
+There is an association between forest cover and snow depth in the West Fork Basin.
+\end{solution}
+  \item Write out the null model making sure to define all parameters used:
+  \begin{solution}[2cm]
+$y_{ij} = \mu_j + \varepsilon_{ij}$ where $\varepsilon_{ij} \sim{} N(0,\sigma^2)$ is the random error and $\mu_j$ is the true mean snow depth for locations in the West Fork Basin that are forested ($j=1$) or locations that are unforested ($j=2$)
+\end{solution}
+\end{parts}
+\end{problem*}
+
+\subsection*{Assess the validity conditions}
+
+\begin{problem}
+{\bf Independence of observations:} The `observations' were the locations that snow depth was measured. The West Fork Basin was split into sampling areas to make the data collection process more feasible. The areas were selected to ensure all of the Basin could be reasonably accounted for. As such, the sampling areas themselves were not random (although they may be representative of the Basin itself). However, within each area a random location was chosen to obtain the snow depth measurements. As a result, there is weak evidence to suggest a clustering of observations or that the observations are related in any way.
+\end{problem}
+\begin{problem}
+{\bf Equal variances in the groups:} We see from the beanplots above that the spreads, or variability, of the distributions of snow depth are similar for each group providing little evidence against this assumption.
+\end{problem}
+\begin{problem*}
+  \begin{parts}
+  \item {\bf Normal distributions of the observations in each group (parametric):} The distributions are not symmetric as the distribution of snow depth for the forested locations is right-skewed and the distribution of snow depth for the unforested locations is bimodal. There are really large sample sizes with 614 snow depth measurements at unforested locations and 403 snow depth measurements at forested locations. With these large sample sizes, due to the Central Limit Theorem, this assumption becomes less problematic.
+  \item {\bf Similar distributions of the observations in each group (nonparametric):} The distributions are not similar as the distribution of snow depth for the forested locations is right-skewed and the distribution of snow depth for the unforested locations is bimodal (and left-skewed based on how the mean snow depth compares to the median snow depth).
+  \end{parts}
+\end{problem*} 
+
+
+\subsection*{Find the value of the appropriate test statistic}
+
+\begin{problem*}
+Use {\tt t.test()} to calculate the test statistic. (This is the test statistic for both the parametric and nonparametric approaches.)
+
+<<4>>=
+# calculate the test statistic
+Tobs <- t.test(depth~cover, data=snow, var.equal = T)$statistic
+Tobs
+@
+
+\begin{parts}
+\item What is the value of the test statistic and what type of statistic is it (t-statistic, z-statistic, F-statistic, etc.)?
+\begin{solution}[1cm]
+$t = 3.71$, it is a t-statistic
+\end{solution}
+  \item What was the order of subtraction in order to get the test statistic?
+  \begin{solution}[1cm]
+Unforested - Forested
+\end{solution}
+\end{parts}
+\end{problem*}
+
+\subsection*{Find the p-value}
+
+\begin{problem*}
+Use {\tt t.test()} to calculate the p-value using a parametric approach
+<<5>>=
+# parametric t test
+t.test(depth~cover, data=snow, var.equal = T, conf.level=0.95)
+@
+\begin{parts}
+  \item Under the null hypothesis, what is the sampling distribution of the test statisic?
+  \begin{solution}[2cm]
+Under the null hypothesis, the t-statistic follows a t-distribution with 1015 degrees of freedom. What this means is that if there were no association between forest cover and snow depth then a sample of size 1017 would yield a t-statistic value with probabilities determined by the t-distribution with 1015 degrees of freedom.
+\end{solution}
+
+\item What is the value of the p-value? Interpret this value in the context of the study.
+\begin{solution}[2cm]
+p-value=0.0002: This means that there approximately is a 0.02\% chance of observing a difference in mean snow depth as or more extreme then the difference oberved in the West Fork Basin, if there truly is no association between forest cover and snow depth.
+\end{solution}
+\end{parts}
+\end{problem*}
+
+
+\begin{problem*}
+Use permutations to {\bf build} the null distribution (a nonparametric approach):
+<<6, cache=TRUE>>=
+B <- 2000 ## number of permutations we will perform
+Tstar <- matrix(NA, nrow = B) ## empty slots for storage
+set.seed(3) ## good practice when dealing with randomness
+for (b in 1:B) {
+  ## calculate the t statistic obtained from each shuffle
+  Tstar[b] <- t.test(depth ~ shuffle(cover), data = snow, 
+                     var.equal = T)$statistic
+}
+pdata(abs(Tstar),abs(Tobs),lower.tail=F) ## obtain a p-value
+@
+<<7, echo=F>>=
+## plot a histogram and density plot of the t stats from the permutations
+par(mfrow=c(1,2))
+hist(Tstar, labels=T, ylim=c(0,400), xlim=c(-Tobs,Tobs))
+  ## add a vertical line for the observed statistic (and its negative)
+  abline(v = c(-Tobs, Tobs), lwd=2, col="red") 
+plot(density(Tstar), main = "Density Plot of Tstar", xlab = "", xlim=c(-Tobs,Tobs))
+  ## add a vertical line for the observed statistic (and its negative)
+  abline(v = c(-Tobs, Tobs), lwd=2, col="red") 
+@
+\begin{parts}
+  \item How many of the permutations resulted in a test statistic as or more extreme than the one observed in the original sample?
+\begin{solution}[0.5cm]
+0 or none
+\end{solution}
+
+\item What is the value of the p-value? ({\bf Note:} If your p-value$=0$ then you should say p-value $<0.001$.)
+\begin{solution}[0.5cm]
+The output says the p-value is 0, but we know that there exists at least one permutation with a t-statistic as or more extreme than our observed one (that is the one observed). Therefore the p-value $<0.001$.
+\end{solution}
+
+\item Compare the sampling distributions of the test statistic under the null hypothesis between non-parametric (permutations) and parametric ($t_{1015}$) using the following plot.
+<<8, fig.height=4, out.width="0.5\\linewidth", echo=F>>=
+### compare distributions
+par(mfrow=c(1,1))
+plot(density(Tstar), xlab = "", main="", lwd=3, xlim=c(-Tobs,Tobs), ylim=c(0,0.4))
+curve(dt(x,1015), add=T, lty="dashed", col="blue", lwd=3)
+legend(-4, 0.4, bty="n", legend=c("Permutations", "t with 1015 df"), lty = c("solid", "dashed"), col=c("black", "blue"),lwd=c(3,3))
+@
+\begin{solution}[2cm]
+The spreads and shapes are very similar. The p-value obtained should be roughly equal between the two methods.
+\end{solution}
+\end{parts}
+\end{problem*}
+
+
+
+\subsection*{Make a decision}
+\begin{problem}
+Make a decision for the test at the $\alpha=0.05$ significance level.
+\begin{solution}[1cm]
+At the 5\% significance level, we reject the null hypothesis.
+\end{solution}
+\end{problem}
+
+
+\subsection*{Write a conclusion}
+\begin{problem}
+Write a conclusion specific to the problem, including scope of inference discussion.
+\begin{solution}[2cm]
+There is very strong evidence to support the claim that there is an association between forest cover and snow depth in the West Fork Basin. As the forest cover (forested or not) was not randomly assigned to locations we cannot infer a causal relationship between forest cover and snow depth. As the locations were randomly sampled from the areas in the West Fork Basin, we can infer this association holds for all areas in the West Fork Basin.
+\end{solution}
+\end{problem}
+
+
+
+\pagebreak
+
+\subsection*{Estimate the difference in means}
+\begin{problem}
+Calculate the point estimate for the difference in means, including the notations. Make sure to label it correctly (that includes the order of subtraction).
+
+<<9, eval=F>>=
+## estimate the difference in means
+Tobs_d <- diffmean(depth~cover, data=snow)
+Tobs_d
+@
+
+\begin{solution}[1cm]
+$\bar{x}_{unf} - \bar{for}_0 = -146.69$ mm
+\end{solution}
+\end{problem}
+
+
+\begin{problem}
+Report the 95\% confidence interval from problem 8. Was this CI obtained parametrically or nonparametrically?
+\begin{solution}[2cm]
+The parametrically obtained CI: (69.11, 224.27) \bf Note: \it The order of subtraction from \tt t.test() \it was unforested - forested, the \tt diffmean() \it function does the subtraction differently.
+\end{solution}
+\end{problem}
+
+
+\begin{problem}
+Now find the 95\% confidence interval using bootstrapping. Is this CI being obtained parametrically or nonparametrically?
+
+<<10>>=
+## bootstrap
+B <- 1000 #we will resample 1000 times
+set.seed(5)
+Tboot <- matrix(NA, nrow=B) #empty slots for each statistic
+for(b in 1:B){ # different from the text but is more in line with 216 methods
+  Tboot[b] <- diffmean(depth~cover, data=resample(snow, groups=cover))
+}
+
+## calculate the 95% CI
+qdata(Tboot, c(0.025,0.975))
+@
+\begin{solution}[1cm]
+The nonparametrically obtained CI: (-228.38, -71.39) mm
+\end{solution}
+\end{problem}
+
+
+\begin{problem}
+Interpret the confidence interval from 14 in the context of the study.
+\begin{solution}[2cm]
+We are 95\% confident that the true mean snow depth of forested locations in the West Fork Basin is between 228.38 mm and 71.39 mm less than the true mean snow depth of unforested locations in the West Fork Basin.
+\end{solution}
+\end{problem}
+
+
+\begin{problem}
+Does your confidence interval from 14 match the decision for the test based on (9b)? Explain.
+\begin{solution}[2cm]
+Yes. We found that our confidence interval for the difference in true means did not contain 0, meaning value of 0 (the null hypothesized value) is not a plausible value the difference in true mean snow depths. If it is not a plausible value, then we should reject the null hypothesis, which is what we did in (9b).
+\end{solution}
+\end{problem}
+
+
+
+
+
+
+\end{exam}
+
+\end{document}

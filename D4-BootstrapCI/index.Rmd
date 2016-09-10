@@ -152,7 +152,7 @@ hist(bootDiff)
 abline(v = obsDiff, col = "blue")
 ```
 
-***Compare the R code and the plot. What is the blue line in the plot? Why the bootstrap distribution is centered at the value of the blue line?***
+**The above plot is created by the R code chunk right before it. From the code, what is the blue line in the plot? Why the bootstrap distribution is centered at the value of the blue line?**
 <textarea class="form-control" rows="3"></textarea>
 
 In order to create a confidence interval from this set of bootstrap statistics, we need to pick the appropriate
@@ -230,7 +230,7 @@ ans <-""
 mult(x, ans)
 ```
 
-**What is the command to compute $s_p$ and CI in R? (See p.69 in textbook for solution)**
+**What is the command to compute $s_p$ and CI in R? In R, `sqrt(4)`is square root of 4, `2^2` is $2^2$. (See p.69 in textbook for solution)**
 <textarea class="form-control" rows="3"></textarea>
 
 ### 4.2. Lazy way
