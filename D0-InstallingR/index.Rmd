@@ -16,12 +16,12 @@ output:
 
 ### On Windows
 * Click on **base**.
-* Click on **Download R 3.3.1 for Windows** to download the executable file then open that file to start the installation.
+* Click on **Download R 3.3.2 for Windows** to download the executable file then open that file to start the installation.
 * The installation should be straightforward. You can choose the displayed language, installation location on your disk, and the components. Leaving them at default will work for most of you.
 * Click **Finish** to end the installation of R.
 
 ### On Mac OS X
-* Scroll down a little bit, you will see some download links designed for different version of your OS. If you have Mac OS X 10.9 (Mavericks) or higher, choose **R-3.3.1.pkg**. If your OS version is older than that, there is a link of an older version of R right below it.
+* Scroll down a little bit, you will see some download links designed for different version of your OS. If you have Mac OS X 10.9 (Mavericks) or higher, choose **R-3.3.2.pkg**. If your OS version is older than that, there is a link of an older version of R right below it.
 * Once it is downloaded, double-click on the installer. You may take all of the defaults.
 
 ### On Linux Systems
@@ -30,9 +30,15 @@ output:
 ## Installing RStudio
 You will not use R directly in this course. Its UI is very basic and not beautiful. Instead, you will use RStudio, an enhanced interface that will make interacting with R less frustrating.
 
-* Go to [RStudio download page](https://www.rstudio.com/products/rstudio/download3/). We will use the Free License Desktop version. Download the appropriate installer for your operating system (Windows, Mac OS X, or Linux).
+* Go to [RStudio download page](https://www.rstudio.com/products/rstudio/download3/). Scroll to the comparison table between different versions, we will use the RStudio Desktop Open Source License FREE. Click on the DOWNLOAD button for that version and choose the appropriate **Installers** for your operating system (Windows, Mac OS X, or Linux).
 * Once it is downloaded, run the RStudio installer and take all of the defaults: In Windows, double-click on the RStudio installer to start the installation; in Mac OS X, double-click on the downloaded RStudio disk-image file, and drag the *RStudio* icon to the *Applications* folder.
-*  When you first run RStudio (in Windows, if you don't see the *RStudio* icon on the desktop, click on Start icon and type in `rstudio` in the search box), it should detect your R installation and start the R console.  
+*  How to Run RStudio
+
+```{r, out.width="50px", echo=F, warning=F, message=F, fig.align='left'}
+knitr::include_graphics("rstudio_icon.png")
+```
+
+  - In Windows system, click on Start icon and type in `rstudio` in the search box. Right-click and choose ``Pin to taskbar''. From now on you can open RStudio from the bottom bar on your screen. Also, minimize all windows and find a R icon on your desktop. We don't use this R. Delete it.
 * To configure RStudio to your taste, select *Tools > Global Options* (Windows) or *RStudio > Preferences* (Mac OS X) from the RStudio menus. In particular, I suggest that on the *General* options screen you **deselect** *Restore .RData into workspace at startup*, and set *Save workspace to .RData on exit* to **Never**. 
 
 ## Using R on Campus Computers
