@@ -1,6 +1,6 @@
 ---
 title: "Chapter 0 (2): R and RStudio"
-date: August 29, 2016
+date: January 11, 2017
 output:
   html_document:
     theme: cosmo
@@ -18,15 +18,15 @@ Once you have opened RStudio you can begin to use R.  R is an **interpreted lang
 ```{r addition, eval=F}
 3 + 4
 ```
-and press *Enter*, the console respond right away (you will not see `##` in the console, it is here to separate inputs and outputs)
-```{r addition2, echo=F}
+and press *Enter*, the console responds right away
+```{r addition2, echo=F, comment=""}
 3 + 4
 ```
 
 ## TryIt!
 
 Use R to add 615 to 247, then divided by 3, type `(615 + 247)/3` into the console then hitting Enter. Check your answer, is it
-```{r addition3, echo=F}
+```{r addition3, echo=F, comment=""}
 (615 + 247)/3
 ```
 
