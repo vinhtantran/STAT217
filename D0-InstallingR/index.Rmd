@@ -16,12 +16,12 @@ output:
 
 ### On Windows
 * Click on **base**.
-* Click on **Download R 3.3.2 for Windows** to download the executable file then open that file to start the installation.
-* The installation should be straightforward. You can choose the displayed language, installation location on your disk, and the components. Leaving them at default will work for most of you.
+* Click on **Download R 3.5.0 for Windows** to download the executable file then open that file to start the installation.
+* The installation should be straightforward. You can choose the displayed language, installation location on your disk, and the components. Leaving them at default will work for most of you. Uncheck the "Create a desktop icon" at the last step so you will be less confusing about which app to run later.
 * Click **Finish** to end the installation of R.
 
 ### On Mac OS X
-* Scroll down a little bit, you will see some download links designed for different version of your OS. If you have Mac OS X 10.9 (Mavericks) or higher, choose **R-3.3.2.pkg**. If your OS version is older than that, there is a link of an older version of R right below it.
+* Scroll down a little bit, you will see some download links designed for different version of your OS. If you have Mac OS X 10.9 (Mavericks) or higher, choose **R-3.5.0.pkg**. If your OS version is older than that, there is a link of an older version of R right below it.
 * Once it is downloaded, double-click on the installer. You may take all of the defaults.
 
 ### On Linux Systems
